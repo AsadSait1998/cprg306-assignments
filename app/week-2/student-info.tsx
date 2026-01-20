@@ -5,7 +5,7 @@ export default function StudentInfo() {
         <div>
             <h1>Student Information</h1>
             <p>Name: Asad Arif</p>
-            <Link href="https://github.com/AsadSait1998" target="_blank" rel="noreferrer"><p>Github Profile : AsadSait1998 </p></Link>
+            <Link href="https://github.com/AsadSait1998" target="_blank" rel="noreferrer"><p>Github Profile : AsadSait1998 </p></Link>"
 
         </div>
     )
