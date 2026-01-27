@@ -19,10 +19,10 @@ export default function Page() {
 
         <li>
           <Link
-            href="/week-3"
+            href="/week-4"
             className="text-green-400 hover:text-green-300 underline"
           >
-            Week 3 Assignment
+            Week 4 Assignment
           </Link>
         </li>
       </ul>
