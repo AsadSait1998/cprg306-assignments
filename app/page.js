@@ -19,6 +19,15 @@ export default function Page() {
 
         <li>
           <Link
+            href="/week-3"
+            className="text-blue-400 hover:text-blue-300 underline"
+          >
+            Week 3 Assignment – Shopping List
+          </Link>
+        </li>
+
+        <li>
+          <Link
             href="/week-4"
             className="text-green-400 hover:text-green-300 underline"
           >
