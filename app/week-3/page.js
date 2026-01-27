@@ -1,6 +1,6 @@
 import NewItem from "./new-item";
 
-export default function Week4Page() {
+export default function Week3Page() {
   return (
     <main
       className="

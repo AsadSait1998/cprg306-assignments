@@ -2,15 +2,27 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <main className="p-10">
-      <h1 className="text-3xl font-bold mb-6">
+    <main className="min-h-screen bg-gray-900 text-white p-10">
+      <h1 className="text-4xl font-bold mb-8 text-cyan-400">
         CPRG 306: Web Development 2 - Assignments
       </h1>
 
-      <ul className="space-y-3">
+      <ul className="space-y-4 text-lg">
         <li>
-          <Link href="/week-4" className="text-blue-600 underline">
-            Go to Week 4
+          <Link
+            href="/week-2"
+            className="text-yellow-400 hover:text-yellow-300 underline"
+          >
+            Week 2 Assignment
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            href="/week-3"
+            className="text-green-400 hover:text-green-300 underline"
+          >
+            Week 3 Assignment
           </Link>
         </li>
       </ul>
