@@ -26,47 +26,42 @@ export default function NewItem() {
     <form
       onSubmit={handleSubmit}
       className="
-        bg-yellow-100
-        border-4 border-yellow-500
+        bg-gray-800
+        text-white
+        border-2 border-cyan-500
         shadow-2xl
         rounded-2xl
         p-8
-        max-w-md
-        space-y-5
+        w-96
+        space-y-6
       "
     >
-      {/* Title */}
-      <h2 className="text-2xl font-bold text-center text-purple-700">
+      <h2 className="text-2xl font-bold text-center text-cyan-400">
         Add New Item
       </h2>
 
       {/* Name */}
       <div className="flex flex-col">
-        <label className="font-bold text-lg text-gray-800 mb-1">
-          Item Name
-        </label>
+        <label className="font-bold mb-1 text-pink-400">Item Name</label>
         <input
           type="text"
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="
-            border-2 border-blue-500
-            bg-white
+            bg-gray-900
+            border-2 border-pink-500
             p-3
             rounded-lg
-            text-black
-            font-semibold
-            focus:ring-4 focus:ring-blue-400
+            text-white
+            focus:ring-4 focus:ring-pink-400
           "
         />
       </div>
 
       {/* Quantity */}
       <div className="flex flex-col">
-        <label className="font-bold text-lg text-gray-800 mb-1">
-          Quantity
-        </label>
+        <label className="font-bold mb-1 text-green-400">Quantity</label>
         <input
           type="number"
           min="1"
@@ -75,12 +70,11 @@ export default function NewItem() {
           value={quantity}
           onChange={(e) => setQuantity(Number(e.target.value))}
           className="
+            bg-gray-900
             border-2 border-green-500
-            bg-white
             p-3
             rounded-lg
-            text-black
-            font-semibold
+            text-white
             focus:ring-4 focus:ring-green-400
           "
         />
@@ -88,20 +82,17 @@ export default function NewItem() {
 
       {/* Category */}
       <div className="flex flex-col">
-        <label className="font-bold text-lg text-gray-800 mb-1">
-          Category
-        </label>
+        <label className="font-bold mb-1 text-yellow-400">Category</label>
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="
-            border-2 border-purple-500
-            bg-white
+            bg-gray-900
+            border-2 border-yellow-500
             p-3
             rounded-lg
-            text-black
-            font-semibold
-            focus:ring-4 focus:ring-purple-400
+            text-white
+            focus:ring-4 focus:ring-yellow-400
           "
         >
           <option value="produce">Produce</option>
@@ -123,9 +114,9 @@ export default function NewItem() {
         type="submit"
         className="
           w-full
-          bg-red-600
-          hover:bg-red-700
-          text-white
+          bg-cyan-500
+          hover:bg-cyan-400
+          text-black
           font-bold
           py-3
           rounded-lg
