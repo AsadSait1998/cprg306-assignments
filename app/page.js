@@ -13,7 +13,7 @@ export default function Page() {
             href="/week-2"
             className="text-yellow-400 hover:text-yellow-300 underline"
           >
-            Week 2 Assignment
+            Week 2 
           </Link>
         </li>
 
@@ -22,7 +22,7 @@ export default function Page() {
             href="/week-3"
             className="text-blue-400 hover:text-blue-300 underline"
           >
-            Week 3 Assignment – Shopping List
+            Week 3 
           </Link>
         </li>
 
@@ -31,7 +31,7 @@ export default function Page() {
             href="/week-4"
             className="text-green-400 hover:text-green-300 underline"
           >
-            Week 4 Assignment
+            Week 4 
           </Link>
         </li>
       </ul>
