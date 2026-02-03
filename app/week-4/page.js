@@ -5,17 +5,14 @@ export default function Week4Page() {
     <main
       className="
         min-h-screen
-        bg-linear-to-br
-        from-gray-900
-        via-gray-800
-        to-black
+        bg-gray-100
         flex
         flex-col
         items-center
         pt-16
       "
     >
-      <h1 className="text-4xl font-extrabold text-cyan-400 mb-10 drop-shadow-lg">
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">
          Shopping List
       </h1>
 
