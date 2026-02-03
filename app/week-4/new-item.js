@@ -6,9 +6,21 @@ export default function NewItem() {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
+  const [nameTouched, setNameTouched] = useState(false);
+
+  const handleBlur = () => {
+    setNameTouched(true);
+  };
+
+  const isNameValid = name.length >= 2;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!isNameValid) {
+      alert("Name must be at least 2 characters long.");
+      return;
+    }
 
     const item = { name, quantity, category };
     console.log(item);
@@ -48,15 +60,26 @@ export default function NewItem() {
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="
+          onBlur={handleBlur}
+          className={`
             bg-gray-900
-            border-2 border-pink-500
+            border-2
             p-3
             rounded-lg
             text-white
             focus:ring-4 focus:ring-pink-400
-          "
+            ${
+              !isNameValid && nameTouched
+                ? "border-red-500"
+                : "border-pink-500"
+            }
+          `}
         />
+        {!isNameValid && nameTouched && (
+          <p className="text-red-500">
+            Name must be at least 2 characters long.
+          </p>
+        )}
       </div>
 
       {/* Quantity */}
@@ -112,7 +135,8 @@ export default function NewItem() {
       {/* Button */}
       <button
         type="submit"
-        className="
+        disabled={!isNameValid}
+        className={`
           w-full
           bg-cyan-500
           hover:bg-cyan-400
@@ -123,9 +147,14 @@ export default function NewItem() {
           text-lg
           shadow-lg
           transition
-        "
+          ${
+            !isNameValid
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-cyan-500 hover:bg-cyan-400"
+          }
+        `}
       >
-         Add Item
+        Add Item
       </button>
     </form>
   );
