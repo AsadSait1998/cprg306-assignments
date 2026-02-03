@@ -125,7 +125,7 @@ export default function NewItem() {
           transition
         "
       >
-        ➕ Add Item
+         Add Item
       </button>
     </form>
   );
