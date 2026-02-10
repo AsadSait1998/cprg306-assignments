@@ -7,16 +7,9 @@ import itemsData from "./items.json";
 export default function ItemList() {
   const [sortBy, setSortBy] = useState("name");
 
-  // create a copy before sorting
   const sortedItems = [...itemsData].sort((a, b) => {
-    if (sortBy === "name") {
-      return a.name.localeCompare(b.name);
-    }
-
-    if (sortBy === "category") {
-      return a.category.localeCompare(b.category);
-    }
-
+    if (sortBy === "name") return a.name.localeCompare(b.name);
+    if (sortBy === "category") return a.category.localeCompare(b.category);
     return 0;
   });
 
@@ -28,8 +21,8 @@ export default function ItemList() {
           onClick={() => setSortBy("name")}
           className={`px-4 py-2 rounded-xl font-medium transition ${
             sortBy === "name"
-              ? "bg-blue-600 text-white"
-              : "bg-gray-200 hover:bg-gray-300"
+              ? "bg-indigo-600 text-white"
+              : "bg-gray-800 text-gray-300 border border-gray-700 hover:bg-gray-700"
           }`}
         >
           Sort by Name
@@ -39,8 +32,8 @@ export default function ItemList() {
           onClick={() => setSortBy("category")}
           className={`px-4 py-2 rounded-xl font-medium transition ${
             sortBy === "category"
-              ? "bg-blue-600 text-white"
-              : "bg-gray-200 hover:bg-gray-300"
+              ? "bg-indigo-600 text-white"
+              : "bg-gray-800 text-gray-300 border border-gray-700 hover:bg-gray-700"
           }`}
         >
           Sort by Category
