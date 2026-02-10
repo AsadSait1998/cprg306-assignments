@@ -15,11 +15,11 @@ export default function ItemList() {
 
   return (
     <div className="space-y-6">
-      {/* Buttons */}
-      <div className="flex gap-4">
+      {/* Sort Buttons */}
+      <div className="flex gap-3 justify-center">
         <button
           onClick={() => setSortBy("name")}
-          className={`px-4 py-2 rounded-xl font-medium transition ${
+          className={`px-3 py-1.5 text-sm rounded-md transition ${
             sortBy === "name"
               ? "bg-indigo-600 text-white"
               : "bg-gray-800 text-gray-300 border border-gray-700 hover:bg-gray-700"
@@ -30,7 +30,7 @@ export default function ItemList() {
 
         <button
           onClick={() => setSortBy("category")}
-          className={`px-4 py-2 rounded-xl font-medium transition ${
+          className={`px-3 py-1.5 text-sm rounded-md transition ${
             sortBy === "category"
               ? "bg-indigo-600 text-white"
               : "bg-gray-800 text-gray-300 border border-gray-700 hover:bg-gray-700"
@@ -41,7 +41,7 @@ export default function ItemList() {
       </div>
 
       {/* Items */}
-      <ul className="space-y-3">
+      <ul className="space-y-2">
         {sortedItems.map((item) => (
           <Item
             key={item.id}
