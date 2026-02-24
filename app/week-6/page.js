@@ -15,7 +15,7 @@ export default function Week6Page() {
   return (
     <main className="min-h-screen bg-black text-white p-8">
       <h1 className="text-4xl font-bold text-blue-400 mb-6">
-        Week 6 Shopping List
+        Shopping List
       </h1>
 
       <div className="bg-zinc-900 p-6 rounded-xl shadow-lg mb-8">
