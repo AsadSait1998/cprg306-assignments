@@ -13,12 +13,16 @@ export default function Week6Page() {
   };
 
   return (
-    <main className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Shopping List</h1>
+    <main className="min-h-screen bg-black text-white p-8">
+      <h1 className="text-4xl font-bold text-blue-400 mb-6">
+        Week 6 Shopping List
+      </h1>
 
-      <NewItem onAddItem={handleAddItem} />
+      <div className="bg-zinc-900 p-6 rounded-xl shadow-lg mb-8">
+        <NewItem onAddItem={handleAddItem} />
+      </div>
 
-      <div className="mt-8">
+      <div className="bg-zinc-900 p-6 rounded-xl shadow-lg">
         <ItemList items={items} />
       </div>
     </main>

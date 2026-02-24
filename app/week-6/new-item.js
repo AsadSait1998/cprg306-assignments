@@ -24,52 +24,43 @@ export default function NewItem({ onAddItem }) {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-gray-100 p-4 rounded-lg shadow"
-    >
-      <div className="mb-3">
-        <label className="block font-medium">Item Name</label>
-        <input
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full p-2 border rounded"
-        />
-      </div>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <h2 className="text-xl font-semibold text-blue-400">Add New Item</h2>
 
-      <div className="mb-3">
-        <label className="block font-medium">Quantity</label>
-        <input
-          type="number"
-          min="1"
-          value={quantity}
-          onChange={(e) => setQuantity(Number(e.target.value))}
-          className="w-full p-2 border rounded"
-        />
-      </div>
+      <input
+        required
+        placeholder="Item name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="w-full p-2 rounded bg-zinc-800 border border-zinc-700 text-white"
+      />
 
-      <div className="mb-3">
-        <label className="block font-medium">Category</label>
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="w-full p-2 border rounded"
-        >
-          <option value="produce">Produce</option>
-          <option value="dairy">Dairy</option>
-          <option value="bakery">Bakery</option>
-          <option value="meat">Meat</option>
-          <option value="frozen">Frozen</option>
-          <option value="canned goods">Canned Goods</option>
-          <option value="dry goods">Dry Goods</option>
-          <option value="beverages">Beverages</option>
-          <option value="snacks">Snacks</option>
-          <option value="household">Household</option>
-        </select>
-      </div>
+      <input
+        type="number"
+        min="1"
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+        className="w-full p-2 rounded bg-zinc-800 border border-zinc-700 text-white"
+      />
 
-      <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className="w-full p-2 rounded bg-zinc-800 border border-zinc-700 text-white"
+      >
+        <option value="produce">Produce</option>
+        <option value="dairy">Dairy</option>
+        <option value="bakery">Bakery</option>
+        <option value="meat">Meat</option>
+        <option value="frozen">Frozen</option>
+        <option value="canned goods">Canned Goods</option>
+        <option value="dry goods">Dry Goods</option>
+        <option value="beverages">Beverages</option>
+        <option value="snacks">Snacks</option>
+        <option value="household">Household</option>
+      </select>
+
+      <button className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded font-semibold">
         Add Item
       </button>
     </form>

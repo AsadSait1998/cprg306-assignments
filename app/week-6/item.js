@@ -1,14 +1,9 @@
-export default function Item({ name, quantity, category }) {
+export default function Item({ item }) {
   return (
-    <li className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 flex justify-between items-center hover:bg-gray-700 transition">
-      <div>
-        <p className="font-medium text-sm">{name}</p>
-        <p className="text-xs text-gray-400 capitalize">{category}</p>
-      </div>
-
-      <span className="bg-indigo-600 text-white text-xs px-2 py-1 rounded-md">
-        {quantity}
-      </span>
+    <li className="bg-zinc-800 border border-zinc-700 p-3 rounded">
+      <span className="font-semibold text-blue-300">{item.name}</span>{" "}
+      <span className="text-gray-300">(x{item.quantity})</span> —{" "}
+      <span className="capitalize text-gray-400">{item.category}</span>
     </li>
   );
 }
