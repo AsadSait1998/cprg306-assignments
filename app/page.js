@@ -56,7 +56,7 @@ export default function Page() {
         <li>
          <Link
           href="/week-7"
-          className="text-blue-900 hover:text-blue-800 underline"
+          className="text-orange-400 hover:text-orange-300 underline"
          >
            Week 7
   </Link>
