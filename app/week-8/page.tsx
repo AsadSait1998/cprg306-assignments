@@ -1,27 +1,52 @@
 "use client";
 
-import { useUserAuth, AuthProvider } from "../_utils/auth-context";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import Link from "next/link";
+import { useUserAuth } from "./_utils/auth-context";
 
-// Import your existing shopping list components and data
-import ShoppingList from "../week-7/components/ShoppingList";
-import itemsData from "../week-7/data/items.json";
+export default function Page() {
+  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
-export default function ShoppingListPage() {
-  const { user, login } = useUserAuth();
-  const router = useRouter();
+  const handleSignIn = async () => {
+    try {
+      await gitHubSignIn();
+    } catch (error) {
+      console.error("Sign in failed:", error);
+    }
+  };
 
-  useEffect(() => {
-    if (!user) login("Guest"); // simple default login for demo
-  }, [user, login]);
+  const handleSignOut = async () => {
+    try {
+      await firebaseSignOut();
+    } catch (error) {
+      console.error("Sign out failed:", error);
+    }
+  };
 
   return (
-    <AuthProvider>
-      <div className="p-8 bg-gray-100 min-h-screen">
-        <h1 className="text-3xl font-bold mb-6 text-center">Week 8 Shopping List</h1>
-        <ShoppingList items={itemsData} />
-      </div>
-    </AuthProvider>
+    <main className="m-8">
+      <h1 className="mb-4 text-2xl font-bold">Week 8</h1>
+
+      {!user && (
+        <button onClick={handleSignIn} className="rounded bg-blue-700 px-4 py-2 text-white">
+          Sign In with GitHub
+        </button>
+      )}
+
+      {user && (
+        <div className="space-y-3">
+          <p>
+            Welcome, {user.displayName} ({user.email})
+          </p>
+          <div className="space-x-4">
+            <Link href="/week-8/shopping-list" className="text-blue-700 underline">
+              Go to Shopping List
+            </Link>
+            <button onClick={handleSignOut} className="rounded bg-gray-700 px-4 py-2 text-white">
+              Sign Out
+            </button>
+          </div>
+        </div>
+      )}
+    </main>
   );
 }
