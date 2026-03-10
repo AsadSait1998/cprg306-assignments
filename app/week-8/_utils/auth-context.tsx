@@ -1,33 +1,30 @@
 "use client";
-import { createContext, useContext, useState, useEffect } from "react";
-import { auth } from "./firebase";
-import { signInWithPopup, signOut, onAuthStateChanged, GithubAuthProvider } from "firebase/auth";
 
-const AuthContext = createContext();
+import { createContext, useContext, useState, ReactNode } from "react";
 
-export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+interface AuthContextType {
+  user: string | null;
+  login: (name: string) => void;
+  logout: () => void;
+}
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return unsubscribe;
-  }, []);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-  const signInWithGitHub = async () => {
-    const provider = new GithubAuthProvider();
-    await signInWithPopup(auth, provider);
-  };
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [user, setUser] = useState<string | null>(null);
 
-  const logout = () => signOut(auth);
+  const login = (name: string) => setUser(name);
+  const logout = () => setUser(null);
 
   return (
-    <AuthContext.Provider value={{ user, signInWithGitHub, logout }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// This is what your page should import
-export const useUserAuth = () => useContext(AuthContext);
+export const useUserAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) throw new Error("useUserAuth must be used within AuthProvider");
+  return context;
+};
