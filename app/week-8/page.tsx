@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 // Import your existing shopping list components and data
-import ShoppingList from "../../week-7/components/ShoppingList"; // adjust path if needed
-import itemsData from "../../week-7/data/items.json"; // adjust path if needed
+import ShoppingList from "../week-7/components/ShoppingList"; // adjust path if needed
+import itemsData from "../week-7/data/items.json"; // adjust path if needed
 
 export default function ShoppingListPage() {
   const { user, firebaseSignOut } = useUserAuth();
