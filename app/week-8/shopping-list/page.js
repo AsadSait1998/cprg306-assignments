@@ -1,45 +1,52 @@
 "use client";
 
-import { useState } from "react";
-import NewItem from "./new-item";
-import ItemList from "./item-list";
-import MealIdeas from "./meal-ideas";
-import itemsData from "./items.json";
+import Link from "next/link";
+import { useUserAuth } from "./_utils/auth-context";
 
 export default function Page() {
-  const [items, setItems] = useState(itemsData);
-  const [selectedItemName, setSelectedItemName] = useState("");
+  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
-  function handleAddItem(item) {
-    setItems([...items, item]);
-  }
+  const handleSignIn = async () => {
+    try {
+      await gitHubSignIn();
+    } catch (error) {
+      console.error("Sign in failed:", error);
+    }
+  };
 
-  function handleItemSelect(item) {
-    let cleanedName = item.name.split(",")[0];
-    cleanedName = cleanedName
-      .replace(
-        /([\u2700-\u27BF]|[\uE000-\uF8FF]|[\u2011-\u26FF])/g,
-        ""
-      )
-      .trim();
-
-    setSelectedItemName(cleanedName);
-  }
+  const handleSignOut = async () => {
+    try {
+      await firebaseSignOut();
+    } catch (error) {
+      console.error("Sign out failed:", error);
+    }
+  };
 
   return (
-    <main className="min-h-screen bg-black text-white p-10">
-      <h1 className="text-3xl font-bold mb-8 text-center">
-        Shopping List with Meal Ideas
-      </h1>
+    <main className="m-8">
+      <h1 className="mb-4 text-2xl font-bold">Week 8</h1>
 
-      <div className="flex flex-col md:flex-row gap-10 justify-center items-start">
-        <div className="flex flex-col gap-6">
-          <NewItem onAddItem={handleAddItem} />
-          <ItemList items={items} onItemSelect={handleItemSelect} />
+      {!user && (
+        <button onClick={handleSignIn} className="rounded bg-blue-700 px-4 py-2 text-white">
+          Sign In with GitHub
+        </button>
+      )}
+
+      {user && (
+        <div className="space-y-3">
+          <p>
+            Welcome, {user.displayName} ({user.email})
+          </p>
+          <div className="space-x-4">
+            <Link href="/week-8/shopping-list" className="text-blue-700 underline">
+              Go to Shopping List
+            </Link>
+            <button onClick={handleSignOut} className="rounded bg-gray-700 px-4 py-2 text-white">
+              Sign Out
+            </button>
+          </div>
         </div>
-
-        <MealIdeas ingredient={selectedItemName} />
-      </div>
+      )}
     </main>
   );
 }

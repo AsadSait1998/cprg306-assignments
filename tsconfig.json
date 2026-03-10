@@ -30,7 +30,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-, "app/week-8/_utils/auth-context.js"  ],
+, "app/week-8/_utils/auth-context.js", "app/week-8/shopping-list/page.js"  ],
   "exclude": [
     "node_modules"
   ]
