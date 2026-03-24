@@ -1,19 +1,41 @@
-import Link from "next/link";
+"use client";
 
-export default function Week7Page() {
+import { useState } from "react";
+import ItemList from "./item-list";
+import MealIdeas from "./meal-ideas";
+import NewItem from "./new-item";
+import itemsData from "./items.json";
+
+export default function Page() {
+  const [items, setItems] = useState(itemsData);
+  const [selectedItemName, setSelectedItemName] = useState("");
+
+  function handleAddItem(item) {
+    setItems([...items, item]);
+  }
+
+  function handleItemSelect(item) {
+    let cleanedName = item.name.split(",")[0];
+    cleanedName = cleanedName
+      .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|[\u2011-\u26FF])/g, "")
+      .trim();
+
+    setSelectedItemName(cleanedName);
+  }
+
   return (
-    <main className="min-h-screen bg-slate-950 px-6 py-12 text-white">
-      <div className="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-xl">
-        <h1 className="mb-4 text-4xl font-bold text-orange-400">Week 7</h1>
-        <p className="mb-6 text-lg text-slate-200">
-          This route is now configured correctly for deployment and no longer returns a 404.
-        </p>
-        <p className="mb-8 text-slate-300">
-          If you want, we can still add your full Week 7 assignment content here next.
-        </p>
-        <Link href="/" className="text-orange-300 underline hover:text-orange-200">
-          Back to Assignments
-        </Link>
+    <main className="min-h-screen bg-black p-10 text-white">
+      <h1 className="mb-8 text-center text-3xl font-bold">
+        Shopping List with Meal Ideas
+      </h1>
+
+      <div className="flex flex-col items-start justify-center gap-10 md:flex-row">
+        <div className="flex flex-col gap-6">
+          <NewItem onAddItem={handleAddItem} />
+          <ItemList items={items} onItemSelect={handleItemSelect} />
+        </div>
+
+        <MealIdeas ingredient={selectedItemName} />
       </div>
     </main>
   );
