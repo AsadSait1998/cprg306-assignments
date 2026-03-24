@@ -1,13 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #07111f;
-  --foreground: #e8eef7;
-  --panel: rgba(10, 24, 45, 0.74);
-  --panel-strong: rgba(11, 29, 54, 0.92);
-  --border-soft: rgba(154, 180, 212, 0.18);
-  --accent: #7dd3fc;
-  --accent-2: #f9a8d4;
+  --background: #0f172a;
+  --foreground: #e5eefb;
+  --panel: rgba(15, 23, 42, 0.82);
+  --panel-strong: rgba(30, 41, 59, 0.9);
 }
 
 @theme inline {
@@ -25,12 +22,11 @@ body {
   min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
-  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-image:
-    radial-gradient(circle at top left, rgba(125, 211, 252, 0.18), transparent 28%),
-    radial-gradient(circle at 85% 15%, rgba(249, 168, 212, 0.14), transparent 22%),
-    radial-gradient(circle at bottom right, rgba(45, 212, 191, 0.14), transparent 24%),
-    linear-gradient(180deg, #08111f 0%, #0b1729 48%, #08101c 100%);
+    linear-gradient(135deg, rgba(59, 130, 246, 0.14), transparent 35%),
+    linear-gradient(220deg, rgba(16, 185, 129, 0.1), transparent 30%),
+    linear-gradient(180deg, #0f172a 0%, #111827 52%, #172554 100%);
   background-attachment: fixed;
 }
 
@@ -41,7 +37,6 @@ main {
 h1,
 h2,
 h3 {
-  font-family: Georgia, "Times New Roman", serif;
   letter-spacing: -0.02em;
 }
 
@@ -57,12 +52,7 @@ select {
     box-shadow 160ms ease;
 }
 
-button:hover,
-a:hover {
-  transform: translateY(-1px);
-}
-
 ::selection {
-  background: rgba(125, 211, 252, 0.35);
+  background: rgba(96, 165, 250, 0.35);
   color: #f8fbff;
 }
