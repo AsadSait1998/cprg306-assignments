@@ -22,8 +22,7 @@ export default function StudentInfo() {
         </div>
       </div>
       <p className="text-sm leading-7 text-slate-400">
-        A simple profile card gives the week a cleaner landing state while still keeping the content
-        straightforward.
+        
       </p>
     </div>
   );
