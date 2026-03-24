@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
  
-const AuthContext = createContext();
+const AuthContext = createContext(undefined);
  
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -28,7 +28,7 @@ export const AuthContextProvider = ({ children }) => {
       setUser(currentUser);
     });
     return () => unsubscribe();
-  }, [user]);
+  }, []);
  
   return (
     <AuthContext.Provider value={{ user, gitHubSignIn, firebaseSignOut }}>
@@ -38,5 +38,11 @@ export const AuthContextProvider = ({ children }) => {
 };
  
 export const useUserAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error("useUserAuth must be used within an AuthContextProvider");
+  }
+
+  return context;
 };

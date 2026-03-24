@@ -17,13 +17,22 @@ async function fetchMealIdeas(ingredient) {
 export default function MealIdeas({ ingredient }) {
   const [meals, setMeals] = useState([]);
 
-  async function loadMealIdeas() {
-    const mealData = await fetchMealIdeas(ingredient);
-    setMeals(mealData);
-  }
-
   useEffect(() => {
+    let isMounted = true;
+
+    async function loadMealIdeas() {
+      const mealData = await fetchMealIdeas(ingredient);
+
+      if (isMounted) {
+        setMeals(mealData);
+      }
+    }
+
     loadMealIdeas();
+
+    return () => {
+      isMounted = false;
+    };
   }, [ingredient]);
 
   return (
