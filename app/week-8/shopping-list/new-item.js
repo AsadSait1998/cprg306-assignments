@@ -25,14 +25,14 @@ export default function NewItem({ onAddItem }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-xl font-semibold text-blue-400">Add New Item</h2>
+      <h2 className="text-xl font-semibold text-sky-300">Add New Item</h2>
 
       <input
         required
         placeholder="Item name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full p-2 rounded bg-zinc-800 border border-zinc-700 text-white"
+        className="w-full rounded-xl border border-slate-600 bg-slate-900/80 px-3 py-2.5 text-white placeholder:text-slate-400 focus:border-sky-300"
       />
 
       <input
@@ -40,13 +40,13 @@ export default function NewItem({ onAddItem }) {
         min="1"
         value={quantity}
         onChange={(e) => setQuantity(Number(e.target.value))}
-        className="w-full p-2 rounded bg-zinc-800 border border-zinc-700 text-white"
+        className="w-full rounded-xl border border-slate-600 bg-slate-900/80 px-3 py-2.5 text-white focus:border-sky-300"
       />
 
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="w-full p-2 rounded bg-zinc-800 border border-zinc-700 text-white"
+        className="w-full rounded-xl border border-slate-600 bg-slate-900/80 px-3 py-2.5 text-white focus:border-sky-300"
       >
         <option value="produce">Produce</option>
         <option value="dairy">Dairy</option>
@@ -60,7 +60,7 @@ export default function NewItem({ onAddItem }) {
         <option value="household">Household</option>
       </select>
 
-      <button className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded font-semibold">
+      <button className="rounded-xl bg-sky-400 px-4 py-2.5 font-semibold text-slate-950 shadow-[0_10px_24px_rgba(56,189,248,0.22)] hover:bg-sky-300">
         Add Item
       </button>
     </form>
