@@ -29,42 +29,64 @@ export default function Week10Page() {
   };
 
   return (
-    <main className="m-8">
-      <h1 className="mb-4 text-2xl font-bold">Week 10</h1>
+    <main className="min-h-screen px-6 py-12 md:px-10">
+      <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/10 bg-[var(--panel)] p-8 shadow-[0_18px_60px_rgba(0,0,0,0.24)] backdrop-blur md:p-10">
+        <p className="mb-3 text-sm uppercase tracking-[0.24em] text-teal-200">Week 10</p>
+        <h1 className="text-4xl font-bold text-white md:text-5xl">Firestore Shopping List</h1>
+        <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+          The Week 10 experience builds on authentication and stores each signed-in user’s list in
+          Cloud Firestore.
+        </p>
 
-      {!user && (
-        <div className="space-y-3">
-          <button onClick={handleSignIn} className="rounded bg-blue-700 px-4 py-2 text-white">
-            Sign In with GitHub
-          </button>
-          {authError && (
-            <p className="max-w-xl rounded border border-red-700 bg-red-950 px-3 py-2 text-sm text-red-200">
-              {authError}
+        {!user && (
+          <div className="mt-8 rounded-[1.5rem] border border-teal-300/15 bg-slate-950/55 p-6">
+            <h2 className="text-2xl font-semibold text-white">Sign in to access Firestore data</h2>
+            <p className="mt-3 max-w-xl text-slate-300">
+              Your shopping list will load from Firestore after GitHub authentication succeeds.
             </p>
-          )}
-        </div>
-      )}
-
-      {user && (
-        <div className="space-y-3">
-          <p>
-            Welcome, {user.displayName} ({user.email})
-          </p>
-          <div className="space-x-4">
-            <Link href="/week-10/shopping-list" className="text-blue-700 underline">
-              Go to Shopping List
-            </Link>
-            <button onClick={handleSignOut} className="rounded bg-gray-700 px-4 py-2 text-white">
-              Sign Out
-            </button>
+            <div className="mt-5 space-y-3">
+              <button
+                onClick={handleSignIn}
+                className="rounded-full bg-teal-300 px-5 py-2.5 font-semibold text-slate-950 shadow-lg shadow-teal-500/20"
+              >
+                Sign In with GitHub
+              </button>
+              {authError && (
+                <p className="max-w-xl rounded border border-red-700 bg-red-950 px-3 py-2 text-sm text-red-200">
+                  {authError}
+                </p>
+              )}
+            </div>
           </div>
-          {authError && (
-            <p className="max-w-xl rounded border border-red-700 bg-red-950 px-3 py-2 text-sm text-red-200">
-              {authError}
+        )}
+
+        {user && (
+          <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-slate-950/55 p-6">
+            <p className="text-lg text-slate-200">
+              Welcome, <span className="font-semibold text-white">{user.displayName}</span> ({user.email})
             </p>
-          )}
-        </div>
-      )}
+            <div className="mt-5 flex flex-wrap gap-4">
+              <Link
+                href="/week-10/shopping-list"
+                className="rounded-full bg-white px-5 py-2.5 font-semibold text-slate-950"
+              >
+                Open Shopping List
+              </Link>
+              <button
+                onClick={handleSignOut}
+                className="rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-white"
+              >
+                Sign Out
+              </button>
+            </div>
+            {authError && (
+              <p className="mt-4 max-w-xl rounded border border-red-700 bg-red-950 px-3 py-2 text-sm text-red-200">
+                {authError}
+              </p>
+            )}
+          </div>
+        )}
+      </div>
     </main>
   );
 }

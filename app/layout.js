@@ -4,7 +4,7 @@ import { AuthContextProvider as Week10AuthProvider } from "./week-10/_utils/auth
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen">
         <Week8AuthProvider>
           <Week10AuthProvider>{children}</Week10AuthProvider>
         </Week8AuthProvider>
